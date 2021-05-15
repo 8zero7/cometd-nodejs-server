@@ -1,4 +1,4 @@
-![NodeJS CI](https://github.com/cometd/cometd-nodejs-server/workflows/NodeJS%20CI/badge.svg)
+> This is a fork of https://github.com/cometd/cometd-nodejs-server
 
 ## The CometD Project
 
@@ -25,14 +25,14 @@ npm test
 ### Minimal Application
 
 ```javascript
-var http = require('http');
+var http = require("http");
 
-var cometd = require('cometd-nodejs-server');
+var cometd = require("cometd-nodejs-server");
 var cometdServer = cometd.createCometDServer();
 
 var httpServer = http.createServer(cometdServer.handle);
-httpServer.listen(0, 'localhost', function() {
-    // Your application code here.
+httpServer.listen(0, "localhost", function () {
+  // Your application code here.
 });
 ```
 
@@ -65,19 +65,19 @@ timeout.
 ### Creating Channels and Receiving Messages
 
 ```javascript
-var channel = cometdServer.createServerChannel('/service/chat');
-channel.addListener('message', function(session, channel, message, callback) {
-    // Your message handling here.
+var channel = cometdServer.createServerChannel("/service/chat");
+channel.addListener("message", function (session, channel, message, callback) {
+  // Your message handling here.
 
-    // Invoke the callback to signal that handling is complete.
-    callback();
+  // Invoke the callback to signal that handling is complete.
+  callback();
 });
 ```
 
 ### Publishing Messages on a Channel
 
 ```javascript
-var channel = cometdServer.createServerChannel('/chat');
+var channel = cometdServer.createServerChannel("/chat");
 channel.publish(session, message.data);
 ```
 
@@ -88,8 +88,8 @@ cometdServer.policy = {
     canHandshake: function(session, message, callback) {
         // Your handshake policy here.
         var allowed = ...;
-        
-        // Invoke the callback to signal the policy result. 
+
+        // Invoke the callback to signal the policy result.
         callback(null, allowed);
     }
 };
@@ -99,26 +99,26 @@ cometdServer.policy = {
 
 ```javascript
 var session = cometdServer.getServerSession(sessionId);
-session.deliver(null, '/service/chat', {
-    text: 'lorem ipsum'
+session.deliver(null, "/service/chat", {
+  text: "lorem ipsum",
 });
 ```
 
 ### Reacting to Session Timeout/Disconnection
 
-```javascript 
-session.addListener('removed', function(session, timeout) {
-    if (timeout) {
-        // Session was expired by the server.
-    } else {
-        // Session was explicitly disconnected.
-    }
+```javascript
+session.addListener("removed", function (session, timeout) {
+  if (timeout) {
+    // Session was expired by the server.
+  } else {
+    // Session was explicitly disconnected.
+  }
 });
 ```
 
 ### Accessing Contextual Information
 
-In certain cases it is necessary to access contextual information 
+In certain cases it is necessary to access contextual information
 such as the HTTP request that carries incoming CometD messages, or
 the HTTP response that carries outgoing CometD messages.
 
@@ -146,5 +146,5 @@ channel.addListener('message', function(session, channel, message, callback) {
 ```
 
 > NOTE: always check if the `request` and `response` objects are defined;
-they may not be defined if the transport used is not HTTP but, for example,
-WebSocket.
+> they may not be defined if the transport used is not HTTP but, for example,
+> WebSocket.

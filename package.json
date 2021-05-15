@@ -1,6 +1,6 @@
 {
-  "name": "cometd-nodejs-server",
-  "version": "1.1.0",
+  "name": "@8zero7/cometd-nodejs-server",
+  "version": "1.2.0",
   "description": "CometD server for NodeJS",
   "keywords": [
     "node",
@@ -9,25 +9,25 @@
   ],
   "homepage": "https://cometd.org",
   "bugs": {
-    "url": "https://github.com/cometd/cometd-nodejs-server/issues"
+    "url": "https://github.com/8zero7/cometd-nodejs-server/issues"
   },
   "license": "Apache-2.0",
   "main": "cometd-nodejs-server.js",
   "types": "cometd-nodejs-server.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cometd/cometd-nodejs-server.git"
+    "url": "https://github.com/8zero7/cometd-nodejs-server.git"
   },
   "scripts": {
     "test": "mocha --exit --require ts-node/register --extensions ts test/*.ts"
   },
   "devDependencies": {
-    "cometd": "latest",
-    "cometd-nodejs-client": "latest",
-    "mocha": "latest",
-    "typescript": "latest",
-    "ts-node": "latest",
-    "@types/node": "latest",
-    "@types/mocha": "latest"
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^14.14.33",
+    "cometd": "^7.0.2",
+    "cometd-nodejs-client": "^1.3.0",
+    "mocha": "^8.4.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
   }
 }
